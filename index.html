@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plain Sudoku</title>
+<meta name="description" content="A minimal Sudoku with three difficulty levels, pencil notes, hints, undo and a timer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+  <header class="top">
+    <h1>Sudoku</h1>
+    <div class="timer" id="timer">00:00</div>
+  </header>
+
+  <div class="levels">
+    <div class="seg" role="group" aria-label="Difficulty" id="levels">
+      <button type="button" data-d="easy" aria-pressed="true">Easy</button>
+      <button type="button" data-d="medium" aria-pressed="false">Medium</button>
+      <button type="button" data-d="hard" aria-pressed="false">Hard</button>
+    </div>
+    <button type="button" class="newgame" id="newgame">New game</button>
+  </div>
+
+  <div class="boardwrap">
+    <div class="board" id="board" role="grid" aria-label="Sudoku board"></div>
+    <div class="win" id="win" hidden>
+      <h2>Solved</h2>
+      <p id="winTime"></p>
+      <p id="winBest"></p>
+      <button type="button" class="primary" id="winNew">Play again</button>
+    </div>
+  </div>
+
+  <p class="status"><span id="stats">Mistakes 0 · Hints 0</span><span id="best">Best —</span></p>
+
+  <div class="tools">
+    <button type="button" class="tool" id="undo">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></svg>
+      <span>Undo</span>
+    </button>
+    <button type="button" class="tool" id="erase">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 21-4-4a2 2 0 0 1 0-3L13 4a2 2 0 0 1 3 0l5 5a2 2 0 0 1 0 3L13 21z"/><path d="M22 21H7"/></svg>
+      <span>Erase</span>
+    </button>
+    <button type="button" class="tool" id="notes" aria-pressed="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+      <span id="notesLabel">Notes off</span>
+    </button>
+    <button type="button" class="tool" id="hintBtn">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2V17h6v-.3c0-.8.4-1.5 1-2A7 7 0 0 0 12 2z"/></svg>
+      <span>Hint</span>
+    </button>
+  </div>
+
+  <div class="pad" id="pad" aria-label="Number pad"></div>
+
+  <p class="hint">Keys: 1–9 to fill, arrows to move, N for notes, H for a hint, Ctrl+Z to undo.</p>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
